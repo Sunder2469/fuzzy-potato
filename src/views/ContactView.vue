@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppTable from '@/components/sidebar/AppTable.vue'
+import AppTable from '@/components/AppTable.vue'
 import { fetchWrapper, baseUrl } from '@/helpers/fetch-wraper'
 import { onMounted, ref } from 'vue'
 import type TableHeader from '@/interfaces/TableHeader'

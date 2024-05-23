@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { computed, type PropType, ref } from 'vue'
+import type TableHeader from '@/interfaces/TableHeader';
 
 interface Item {
   [key: string]: any;
-}
-interface TableHeader {
-  label: string,
-  key: string
 }
 
 const props = defineProps({
@@ -27,7 +24,7 @@ props.headers.forEach((header) => {
   sortOrders.value[header.key] = 1;
 });
 
-const sort = (key: string) => {
+const sort = (key: keyof Item) => {
   if (sortKey.value === key) {
     sortOrders.value[key] = -sortOrders.value[key];
   } else {
