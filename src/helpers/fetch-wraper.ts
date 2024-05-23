@@ -8,6 +8,8 @@ export const fetchWrapper = {
   delete: request('DELETE')
 }
 
+export const baseUrl: string = `${import.meta.env.VITE_BASE_API_URL}`;
+
 function request(method: string) {
   return (url: string, body?: {}) => {
     const headers: Headers = new Headers()

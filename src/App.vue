@@ -1,25 +1,38 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router'
 
-import { useAuthStore } from '@/stores/authStore.js';
+import { useAuthStore } from '@/stores/authStore.js'
+import AppSidebar from '@/components/sidebar/AppSidebar.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
 
-const authStore = useAuthStore();
+const authStore = useAuthStore()
 </script>
 
 <template>
-  <div class="app-container bg-light">
-    <nav v-show="authStore.user" class="navbar navbar-expand navbar-dark bg-dark">
-      <div class="navbar-nav">
-        <RouterLink to="/" class="nav-item nav-link">Home</RouterLink>
-        <a @click="authStore.logout()" class="nav-item nav-link">Logout</a>
-      </div>
-    </nav>
-    <div class="container pt-4 pb-4">
-      <RouterView />
-    </div>
+  <AppHeader />
+  <AppSidebar v-if="authStore.user" />
+  <AppFooter />
+  <div class="body-main">
+    <RouterView />
   </div>
 </template>
 
 <style>
-@import '@/assets/base.css';
+@import "assets/main.css";
+
+.body-main {
+  width: 100%;
+  height: 100%;
+  padding: 35px 40px 35px 40px;
+}
+
+a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
