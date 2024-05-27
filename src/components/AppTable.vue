@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, type PropType, ref } from 'vue'
-import type TableHeader from '@/interfaces/TableHeader';
+import type TableHeader from '@/interfaces/TableHeader'
 
 interface Item {
   [key: string]: any;
@@ -17,37 +17,37 @@ const props = defineProps({
   }
 })
 
-const sortKey = ref<keyof Item | ''>('');
-const sortOrders = ref<Record<keyof Item, number>>({});
+const sortKey = ref<keyof Item | ''>('id')
+const sortOrders = ref<Record<keyof Item, number>>({})
 
 props.headers.forEach((header) => {
-  sortOrders.value[header.key] = 1;
-});
+  sortOrders.value[header.key] = 1
+})
 
 const sort = (key: keyof Item) => {
   if (sortKey.value === key) {
-    sortOrders.value[key] = -sortOrders.value[key];
+    sortOrders.value[key] = -sortOrders.value[key]
   } else {
-    sortKey.value = key;
+    sortKey.value = key
   }
-};
+}
 
-const filteredData = computed<Item[]>(() => { // any fix item.id
-  let filtered = [...props.items];
+const filteredData = computed<Item[]>(() => {
+  let filtered = [...props.items]
   if (sortKey.value) {
     filtered = filtered.sort((a, b) => {
-      const order = sortOrders.value[sortKey.value];
+      const order = sortOrders.value[sortKey.value]
       if (a[sortKey.value] > b[sortKey.value]) {
-        return order;
+        return order
       } else if (a[sortKey.value] < b[sortKey.value]) {
-        return -order;
+        return -order
       }
-      return 0;
-    });
+      return 0
+    })
   }
 
-  return filtered;
-});
+  return filtered
+})
 
 </script>
 
@@ -62,9 +62,9 @@ const filteredData = computed<Item[]>(() => { // any fix item.id
       >
         {{ header.label }}
         <i
-          class="fas" style="vertical-align: 0"
-          :class="[sortOrders[header.key] > 0 ? 'fa-sort-down' : 'fa-sort-up']"
-        ></i>
+          v-show="sortKey === header.key"
+          style="vertical-align: 0"
+        >{{ sortOrders[header.key] < 1 ? '▲' : '▼' }}</i>
       </th>
     </tr>
     </thead>

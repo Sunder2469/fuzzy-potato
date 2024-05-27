@@ -11,7 +11,7 @@ const props = defineProps({
   icon: {
     type: String,
     required: true
-  },
+  }
 })
 
 const route = useRoute()
@@ -19,7 +19,7 @@ const isActive = computed(() => route.path === props.to)
 </script>
 
 <template>
-  <RouterLink :to="to" class="link" :class="{ active: isActive }">
+  <RouterLink :to="to" class="" :class="['link', { active: isActive } ]">
     <i class="icon" :class="icon" />
     <transition name="fade">
       <span v-if="!isCollapsed">

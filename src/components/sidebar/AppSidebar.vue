@@ -18,7 +18,7 @@ import routesEnum from '@/enums/routesEnum'
 
     <AppSidebarItem :to="routesEnum.HomeRoute" icon="fas fa-home">Home</AppSidebarItem>
     <AppSidebarItem :to="routesEnum.ContactsIndexRoute" icon="fas fa-book">Contacts</AppSidebarItem>
-    <AppSidebarItem :to="routesEnum.AboutUsRoute" icon="fas fa-image">About Us</AppSidebarItem>
+    <AppSidebarItem :to="routesEnum.AboutUsRoute" icon="fas fa-image">Tasks</AppSidebarItem>
     <AppSidebarItem :to="routesEnum.LogoutRoute" icon="fas fa-arrow-right-from-bracket">Logout</AppSidebarItem>
   </div>
 </template>

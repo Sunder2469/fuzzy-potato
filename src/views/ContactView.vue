@@ -4,6 +4,7 @@ import { fetchWrapper, baseUrl } from '@/helpers/fetch-wraper'
 import { onMounted, ref } from 'vue'
 import type TableHeader from '@/interfaces/TableHeader'
 import type Contact from '@/interfaces/Contact'
+import TaskBoard from '@/components/TaskBoard.vue'
 
 const headers: TableHeader[] = [
   { label: 'ID', key: 'id' },
@@ -20,6 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
+<!--  <TaskBoard />-->
   <AppTable :headers="headers" :items="contacts" />
 </template>
 

@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import TaskBoard from '@/components/TaskBoard.vue'
 
 </script>
 
 <template>
   <div>
-    <h1>test view again</h1>
+    <TaskBoard />
   </div>
 </template>
